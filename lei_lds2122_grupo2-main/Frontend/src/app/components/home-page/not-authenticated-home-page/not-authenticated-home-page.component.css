@@ -1,0 +1,117 @@
+#secondDiv {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("http://localhost:4200/assets/images/imgGuimaraes.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+  }
+  
+  #secondDiv span {
+    color: white;
+    font-size: calc(1.375rem + 1.5vw);
+  }
+  
+  p,
+  h1 {
+    font-family: Pacifico;
+  }
+  
+  p {
+    font-size: xx-large;
+  }
+  
+  h1 {
+    color: #8bc34a;
+    font-size: 100px;
+  }
+  
+  @media (min-width: 1201px) {
+    h1 {
+      font-size: 120px;
+    }
+  
+    p {
+      font-size: 40px;
+    }
+  
+    a {
+      font-size: large;
+    }
+  }
+  
+  @media (min-width: 767px) {
+    #firstDiv,
+    #secondDiv {
+      width: 50% !important;
+    }
+  
+    #mainDiv {
+      height: auto;
+    }
+  
+    #firstDiv {
+      justify-content: center !important;
+    }
+  
+    #firstDiv div {
+      margin-bottom: 80px;
+    }
+  }
+  
+  @media (max-width: 766px) {
+    #mainDiv {
+      flex-direction: column;
+    }
+  
+    #firstDiv,
+    #secondDiv {
+      width: 100% !important;
+      height: 50% !important;
+      padding: 0 !important;
+    }
+  
+    #firstDiv {
+      justify-content: space-evenly !important;
+    }
+  
+    p {
+      font-size: x-large;
+      text-align: center;
+    }
+  
+    span {
+      font-size: xx-large;
+    }
+  }
+  
+  @media (max-width: 480px) {
+  
+    h1 {
+      font-size: 70px;
+    }
+  
+    span {
+      font-size: x-large!important;
+    }
+  }
+  
+  @media (max-width: 320px) {
+  
+    h1 {
+      font-size: 40px;
+    }
+  
+    p {
+      font-size: large;
+    }
+     
+    span {
+      font-size: medium!important;
+    }
+  
+    a {
+      padding: 5px!important;
+      font-size: medium!important;
+      font-weight: normal;
+    }
+  }

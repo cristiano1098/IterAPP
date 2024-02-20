@@ -1,0 +1,30 @@
+#registerImage {
+    max-width: 250px;
+    min-width: 160px;
+  }
+  
+  form {
+    max-width: 500px;
+  }
+  
+  @media (max-width: 766px) {
+    form {
+      width: 100% !important;
+    }
+  }
+  
+  @media (min-width: 767px) {
+    form {
+      width: 50% !important;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    form {
+      width: 30% !important;
+    }
+  }
+
+  .disabled-white:disabled{
+    background-color: hsl(0, 0%, 100%);
+}

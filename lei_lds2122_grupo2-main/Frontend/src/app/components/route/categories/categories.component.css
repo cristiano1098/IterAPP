@@ -1,0 +1,30 @@
+.badge-white {
+  background-color: white;
+}
+
+.badge-blue {
+  background-color: aqua;
+}
+
+.badge-green {
+  background-color: var(--greenMain);
+  color: white !important;
+}
+
+.badge-large {
+  font-size: 15px !important;
+}
+
+.badge-medium {
+  font-size: 12px !important;
+}
+
+.badge-small {
+  font-size: 10px !important;
+}
+
+@media (max-width: 1025px) {
+  .badge-large {
+    font-size: 12px !important;
+  }
+}

@@ -1,0 +1,12 @@
+<div *ngFor="let comment of comments" class="d-flex flex-column mb-3">
+
+    <div class="d-flex align-items-center mb-1">
+        <img src="/assets/images/avatarmasculine2.png" alt="perfil" class="profilePic me-3">
+        <h5 class="d-flex flex-grow-1 h-100 align-items-center">{{ comment.userName }}</h5>
+    </div>
+
+    <div>
+        {{ comment.comment }}
+    </div>
+
+</div>

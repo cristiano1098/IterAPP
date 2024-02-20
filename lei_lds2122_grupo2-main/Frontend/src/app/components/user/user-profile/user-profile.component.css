@@ -1,0 +1,30 @@
+/* Small screen */
+@media screen and (max-width: 766px) {
+  .width-display {
+    width: 100%;
+  }
+}
+/* Large screen */
+@media screen and (min-width: 767px) {
+  .width-display {
+    width: 60%;
+  }
+}
+
+/* Small screen */
+@media (max-width: 766px) {
+    .statics-large-screen {
+      display: none !important;
+    }
+  }
+
+/* Large screen */
+@media (min-width: 767px) {
+   .statics-small-screen {
+      display: none !important;
+    }
+    
+  }
+
+  a {text-decoration: none;}
+    a:hover {text-decoration: underline;}

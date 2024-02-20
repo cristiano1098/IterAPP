@@ -1,0 +1,150 @@
+<div *ngIf="!stateVariables.backendConnection" class="alert alert-danger alert-dismissible d-flex align-items-center"
+    role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+        <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </svg>
+    <div class="ms-3">
+        O servidor não responde
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="d-flex flex-column w-100 h-100 align-items-center">
+
+    <h1 class="text-center my-4">Criar Rota</h1>
+    <div id="mainDiv" class="d-flex w-100">
+        <div id="divRouteForm" class="w-40 px-3">
+            <!-- Form with route name and private options -->
+            <form class="mb-5">
+                <div class="mb-3 w-50">
+                    <label for="routeName" class="mb-1">Nome da rota</label>
+                    <input id="inRouteName" type="text" class="form-control shadow-sm" name="name"
+                        [(ngModel)]="route.name" placeholder="Nome da rota">
+                </div>
+
+                <div *ngIf="stateVariables.invalidName != ''" class="alert alert-danger d-flex align-items-center"
+                    role="alert">
+                    <div>
+                        {{ stateVariables.invalidName }}
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- Places map -->
+            <app-map id="mapComponent"></app-map>
+        </div>
+
+        <!-- Create Route menu -->
+        <div id="divCreateRoute" class="d-flex w-60 flex-column px-3">
+            <div id="divSearchPlace" class="d-flex justify-content-between dropdown w-100 my-4">
+                <div id="divInputGroup" class="input-group">
+                    <input id="autocomplete" type="text" class="form-control" placeholder="Procure um local">
+
+                    <button id="btnClearText" class="btn input-group-text"
+                        onclick="document.getElementById('autocomplete').value = ''">X</button>
+                    <span class="input-group-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+
+                <div>
+                    <button id="btnAddLocal" class="btn ms-4 shadow-sm btn-ouline-lightGray"
+                        (click)="addPlace()">Adicionar Local</button>
+                </div>
+            </div>
+
+            <div class="w-100 h-100">
+                <div *ngFor="let place of places; let i = index" class="d-flex w-100 align-items-center mb-3">
+                    <div class="w-30">
+                        <img [src]="place.url" [alt]="place.name" class="placeImg rounded">
+                    </div>
+                    <div class="cardContainer card w-70">
+                        <div class="divPlaceInfo">
+                            <div>
+                                <h5 class="m-0">{{ place.name }}</h5>
+                                <div class="d-flex flex-wrap mt-2">
+                                    <div *ngFor="let category of place.categories">
+                                        <span *ngIf="translations[category] != null"
+                                            class="me-3 mb-1 badge text-secondary border rounded">
+                                            {{ translations[category] }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divBtnRemove1">
+                                <button id="btnRemove1" class="btn btn-outline-danger mt-3 py-1"
+                                    (click)="removePlace(i)">Remover</button>
+                            </div>
+                        </div>
+                        <div class="divTimeInputs">
+                            <div>
+                                <input type="time" class="time form-control" name="startTime"
+                                    [(ngModel)]="placesTimes[i].startTime">
+                            </div>
+                            <div>
+                                <input type="time" class="time form-control" name="finishTime"
+                                    [(ngModel)]="placesTimes[i].finishTime">
+                            </div>
+                        </div>
+                        <div id="divBtnRemove2">
+                            <button id="btnRemove2" class="btn btn-outline-danger py-1"
+                                (click)="removePlace(i)">Remover</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="stateVariables.invalidPlaces != ''" class="alert alert-danger d-flex align-items-center"
+                role="alert">
+                <div>
+                    {{ stateVariables.invalidPlaces }}
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <div *ngIf="stateVariables.creatingRoute" class="d-flex justify-content-end mx-3">
+                    <div class="spinner-border">
+                    </div>
+                </div>
+
+                <button *ngIf="places.length > 0 && !stateVariables.routeCreated && !stateVariables.creatingRoute"
+                    id="btnCreateRoute" type="button" class="btn btn-green px-5 shadow-sm" (click)="createRoute()">
+                    Criar Rota</button>
+
+                <div class="modal fade" id="createRouteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title w-100 text-center">{{route.name}}</h3>
+                            </div>
+                            <div class="d-flex justify-content-between modal-footer border-top-0 border-bottom">
+                                <button type="button" class="btn btn-green " style="font-weight: normal;"
+                                    (click)="saveRoute()">Guardar Rota </button>
+                                <a class="btn btn-primary" (click)="useRoute()" data-bs-dismiss="modal">Utilizar
+                                    Rota</a>
+                            </div>
+                            <div *ngIf="route.name == ''" class="px-3 my-1">
+                                <span class="text-danger">Dê um nome à rota</span>
+                            </div>
+                            <div *ngIf="stateVariables.saveFailed" class="px-3 my-1">
+                                <span class="text-danger">Não foi possível guardar a rota!</span>
+                            </div>
+                            <div *ngIf="stateVariables.saved" class="text-success px-3 my-1">Rota Guardada!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

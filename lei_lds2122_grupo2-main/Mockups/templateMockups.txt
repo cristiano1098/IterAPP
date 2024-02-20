@@ -1,0 +1,18 @@
+
+LER ATENTAMENTE
+
+LOGO DO PROJETO - texto com fonte Pacifico, a negrito tamanho 19 a preto
+COR DO PROJETO - verde (#8bc34a)
+
+DISPOSITIVO MOVEL - pack iphone  iOS 15, iPhone Portrait frame light ( coloquem as horas e bateria e barra web) não alterem as medidas. Package Ionic framework 5 a navbar Ios tertiary color toolbar. Colocar o botao sanduiche à esquerda e ao lado direito icon profile picture do package common. Simbolo do projeto ao centro
+
+
+WEB - browser frame 1024*700 com menu bar(esticado) a verde (#8bc34a) do package Web com 
+Opções ao centro com tipo de letra IBM Plex Serif a negrito
+
+
+
+OS PACKAGES QUE REFERI PODEM NÃO ESTAR LOGO DISPONIVEIS. PODEM ADQUIRIR OS QUE REFIRO NA STORE NA PARTE UI PACKS POIS SÃO GRATUITOS
+
+Podem e devem definir os titulos(cabeçalhos) das páginas. (ex. Iniciar Sessão)
+

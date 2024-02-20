@@ -1,0 +1,949 @@
+{
+    "html_attributions": [],
+    "next_page_token": "Aap_uEDzYhkD1O3oA3XpZrGJpthXih7JvvIvgF2Tx-tZXtW9ab3cYiPGD4S3h3687Q5jpEMpdKu8rr0yt_ydeQFi3q6rG6fPuhLLkMQPyl6Q5gg_NeopuMkUB6d6p59-NVrg7XBZo3YlyH0TieiATbKPxbfd3_ngDuWo0018CZALkVvwmktcjds53H03mrUtPligkZJf1TmEHnZsCpK-oDhLQxzlQSgFSqOq0tTM9eYvPPXaUBkJ-_I3SaOntJHiUdNZrppdzM4mY013Ur5rNE2yVHzXVfwO9CuKJmpLRlb5ma2X3KJz3e04ppdl4nxOH_RH8m8sSHBxj9Mhr_2vMXEBj3bYp0hXmnRNReXD-4GVEOxSgIkydlQUm7xL2BA3rpz6PiQYD4jY6bo0R6Hyfs87QvhxRaLGG97W08ehRIEIgIBJkipCgO6uqKfRnGMGgm9jaFUlSmfsfyc2Rg",
+    "results": [
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Guimaraes",
+            "geometry": {
+                "location": {
+                    "lat": 41.4443037,
+                    "lng": -8.297492999999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44563442989273,
+                        "lng": -8.296203920107279
+                    },
+                    "southwest": {
+                        "lat": 41.44293477010729,
+                        "lng": -8.298903579892723
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Obelisco Alameda Alfredo Pimenta",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 1504,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/110555017817434805101\">Nacho Fernández</a>"
+                    ],
+                    "photo_reference": "Aap_uECkZzI8pWDLBDq2a4P2BvqozK9JrhOHw6fpajg9CGGz3q32zDLsFFuxC36_bCLeb7hV4eXN15aly6YBZUxVlbLwQ3avHjn-UaUWnFMTnVj4ZRVz2SgASjHJzT2a3NJj-_Xjy2rUqZXp8gg8QpXQ2J7GmzCoNsk7a_Gdlc3LGMK8kGuH",
+                    "width": 3264
+                }
+            ],
+            "place_id": "ChIJbV0fI0bvJA0RS_mEknUHbIk",
+            "plus_code": {
+                "compound_code": "CPV3+P2 Guimaraes",
+                "global_code": "8CHHCPV3+P2"
+            },
+            "rating": 0,
+            "reference": "ChIJbV0fI0bvJA0RS_mEknUHbIk",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "R. Cidade de Guimarães 4810 4810, 4810-041 Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4333941,
+                    "lng": -8.269480099999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.43443337989272,
+                        "lng": -8.26789602010728
+                    },
+                    "southwest": {
+                        "lat": 41.43173372010727,
+                        "lng": -8.270595679892724
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Gruta do Medo",
+            "photos": [
+                {
+                    "height": 4000,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/105082367310812540957\">B Locatelli</a>"
+                    ],
+                    "photo_reference": "Aap_uECQWlo142vhcMxKTBA2tliuukDgj4ASx9A9LbujweyISfMze9w4YszzOuvQTUfcUu7-9k0S8lAdtA-14G11DcdPmzMfYLGMqNiFs8PuapCnu1-ke3M1NmSmalSCqO3Pu6tt9D60O7e38GTvvi9HFc2VGnjl0Tanz2EXXVvVzR4iExIA",
+                    "width": 6000
+                }
+            ],
+            "place_id": "ChIJv4hH7RvvJA0R_KfWU5t29aM",
+            "plus_code": {
+                "compound_code": "CPMJ+96 Guimaraes",
+                "global_code": "8CHHCPMJ+96"
+            },
+            "rating": 0,
+            "reference": "ChIJv4hH7RvvJA0R_KfWU5t29aM",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Largo dos Laranjais, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4445381,
+                    "lng": -8.2939887
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44582012989272,
+                        "lng": -8.292707120107277
+                    },
+                    "southwest": {
+                        "lat": 41.44312047010727,
+                        "lng": -8.295406779892721
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Alberto Sampaio",
+            "photos": [
+                {
+                    "height": 4160,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/113536405223350802497\">rosana cabrera</a>"
+                    ],
+                    "photo_reference": "Aap_uEBvV4apTcUfVE-xgxm6u1w-sNzPUQ4ok1-K14wKX6fPnTt5ncsfcbY5Ra9m8iK_sDUTmsLWewlL5kxnNt-CvJxlRLw4xj8E7-Rdzv3eeogJ4junNZ6OYMfBLOqHPVow4WEmc6QtVhH8m-3lm12k538BwE6cJOZvUbUDrS6lzd28R-Gk",
+                    "width": 3120
+                }
+            ],
+            "place_id": "ChIJ2xE7gNHvJA0R7M5DLa5X9YQ",
+            "plus_code": {
+                "compound_code": "CPV4+RC Guimaraes",
+                "global_code": "8CHHCPV4+RC"
+            },
+            "rating": 0,
+            "reference": "ChIJ2xE7gNHvJA0R7M5DLa5X9YQ",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Calçada de Barco, Ponte",
+            "geometry": {
+                "location": {
+                    "lat": 41.4789308,
+                    "lng": -8.348297799999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.48029247989273,
+                        "lng": -8.347031570107278
+                    },
+                    "southwest": {
+                        "lat": 41.47759282010729,
+                        "lng": -8.349731229892722
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Baloiço dos Moinhos",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 2080,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/108781686661591212141\">Ricardo Teixeira</a>"
+                    ],
+                    "photo_reference": "Aap_uECo9Ws6UwbsESQDN_VdzMBuOXJwbxEseP8zPnFyTdjDhnkq-SvfhgGHbB9YLv3O7vwr1qoQZG-NJ5iHrviHH-hmM3cCF3ScRp3dTfdvs8rHhFl2grpVoCThX350xBuHS4L0Gah-W8Ade_SuXkzq1vUsI04UXIV6nFC2ekdS51HJzh-E",
+                    "width": 4624
+                }
+            ],
+            "place_id": "ChIJkxx5CtH7JA0RfYCbHlxc23I",
+            "plus_code": {
+                "compound_code": "FMH2+HM Ponte",
+                "global_code": "8CHHFMH2+HM"
+            },
+            "rating": 5,
+            "reference": "ChIJkxx5CtH7JA0RfYCbHlxc23I",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Praça de São Tiago 10, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4433225,
+                    "lng": -8.2931747
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44466662989272,
+                        "lng": -8.292022920107279
+                    },
+                    "southwest": {
+                        "lat": 41.44196697010727,
+                        "lng": -8.294722579892722
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Praça de São Tiago",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 1365,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/101619250890404009335\">João Pedro Gonçalves</a>"
+                    ],
+                    "photo_reference": "Aap_uEBEZid11P7JZ2HBKOagjRM03-2GOS0m6dMKN_UBPortdkQMD4DGw10qfW4-HddPD2NVTh5NisLcF3Y5GvO6_alcM58SzidCtKGjC7o9DyqZUej3rdmvEbNYyzpwvVpqJ3NGSVJ_REJmeCEI14YoMhGLoHNaI_HRZOMvvStD02vEkhHW",
+                    "width": 2048
+                }
+            ],
+            "place_id": "ChIJeXZPkOnvJA0RmrWdBfaOOSY",
+            "plus_code": {
+                "compound_code": "CPV4+8P Guimaraes",
+                "global_code": "8CHHCPV4+8P"
+            },
+            "rating": 4.7,
+            "reference": "ChIJeXZPkOnvJA0RmrWdBfaOOSY",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 246
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "R. dos Carvalhos 4810, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4315315,
+                    "lng": -8.268371999999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.43287272989272,
+                        "lng": -8.266973370107278
+                    },
+                    "southwest": {
+                        "lat": 41.43017307010728,
+                        "lng": -8.269673029892722
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Cruzeiro",
+            "photos": [
+                {
+                    "height": 4032,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/111230209415688063421\">Lia Ferreira</a>"
+                    ],
+                    "photo_reference": "Aap_uEDDHDQBT5e-vfYfiQktJxWm3eM7tWqq6Yu-ruKN4Waa-RuuAEz4u_pj-pkAW3hbLU-Ss6PNVXCSijEu9zJebMvrq7AhymWXUgJ6CGkbLFHCKJQYhURWbadAbiDngVTdbz6zhwRw6_IEnPycdXpHL1K2UXyD2t66o5eNZqdRLLsPqvuj",
+                    "width": 3024
+                }
+            ],
+            "place_id": "ChIJwyUpkr_vJA0RwsHemkcW7ks",
+            "plus_code": {
+                "compound_code": "CPJJ+JM Guimaraes",
+                "global_code": "8CHHCPJJ+JM"
+            },
+            "rating": 4,
+            "reference": "ChIJwyUpkr_vJA0RwsHemkcW7ks",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Guimaraes",
+            "geometry": {
+                "location": {
+                    "lat": 41.4647222,
+                    "lng": -8.280604
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.46603417989272,
+                        "lng": -8.279197620107277
+                    },
+                    "southwest": {
+                        "lat": 41.46333452010727,
+                        "lng": -8.281897279892721
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Ponte medieval",
+            "opening_hours": {},
+            "photos": [
+                {
+                    "height": 4032,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/110967848597832591376\">Joao Batista Leite</a>"
+                    ],
+                    "photo_reference": "Aap_uEA_w-fyB12IhWVTPJ359-r2ng7hAoCHb4oc7uU5NQYQV1YPxB_eDrBHQD2MzMWvLGKBygaTS7EFJPexAnTYxWm3oyBQaW6XZp-P8fn_cpw9wV-oHajdktG50HuG_V53TBpSo9l_jtwSPHknwZU3BzIqQXBJh2Vm7kJ49K6DqPb1rRc5",
+                    "width": 3024
+                }
+            ],
+            "place_id": "ChIJD3O2IXPlJA0RMHrMvseFS1A",
+            "plus_code": {
+                "compound_code": "FP79+VQ Guimaraes",
+                "global_code": "8CHHFP79+VQ"
+            },
+            "rating": 4.5,
+            "reference": "ChIJD3O2IXPlJA0RMHrMvseFS1A",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 40
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Largo Martins Sarmento 49, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4455938,
+                    "lng": -8.293317
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44692717989272,
+                        "lng": -8.291899970107279
+                    },
+                    "southwest": {
+                        "lat": 41.44422752010728,
+                        "lng": -8.294599629892723
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Casa Martins Sarmento em Guimarães",
+            "photos": [
+                {
+                    "height": 2559,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/118442993789604422267\">areal2004</a>"
+                    ],
+                    "photo_reference": "Aap_uEDww_dvDWJVaLtql3YtxVGFPa8GNZBV9K2Dunk95BfI__vSvU5vRpNkGO3Hj1muwxP4GaDCKlGNGU_LAw0slaSL2NO83tuMu50IgIuJScftjDxTXQkbrJn2rPiP65IuUaTrM9ztYnQdAZ2oQzHrOlPJr6tQ5dFlnj-lsv2m7WUXv7Po",
+                    "width": 3559
+                }
+            ],
+            "place_id": "ChIJ3a1SQunvJA0R7MxGcsG2Exg",
+            "plus_code": {
+                "compound_code": "CPW4+6M Guimaraes",
+                "global_code": "8CHHCPW4+6M"
+            },
+            "rating": 4.7,
+            "reference": "ChIJ3a1SQunvJA0R7MxGcsG2Exg",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 3
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "R. Dr. Francisco Fernandes 8, 4800-876 São Torcato",
+            "geometry": {
+                "location": {
+                    "lat": 41.4807792,
+                    "lng": -8.259289299999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.48204907989273,
+                        "lng": -8.257707820107276
+                    },
+                    "southwest": {
+                        "lat": 41.47934942010728,
+                        "lng": -8.26040747989272
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Terreiro de São Torcato",
+            "photos": [
+                {
+                    "height": 2268,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/110786400100743336956\">Gastão Crespo</a>"
+                    ],
+                    "photo_reference": "Aap_uEAIsLCA_IBHeE-6V-eWE8OW5kz35HCucvv5_BDCUTW_rdbVTIZj0jlFV-EarUg-vsF03ADGp0Tx-PDD1TheH406lyXJgcgdvtrykB6oeCKbPUYjYlT_1gLeyqnJ90wLEcEyuhknWas19oAzM97V_0xfQyajQE_0PAKtjaZATDh8j7D1",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJy-mERcflJA0RFrdndYR3qbs",
+            "plus_code": {
+                "compound_code": "FPJR+87 São Torcato",
+                "global_code": "8CHHFPJR+87"
+            },
+            "rating": 4.8,
+            "reference": "ChIJy-mERcflJA0RFrdndYR3qbs",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 9
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Guimaraes",
+            "geometry": {
+                "location": {
+                    "lat": 41.4447784,
+                    "lng": -8.291226699999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44613867989272,
+                        "lng": -8.289831020107279
+                    },
+                    "southwest": {
+                        "lat": 41.44343902010727,
+                        "lng": -8.292530679892723
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Porta do Burgo",
+            "photos": [
+                {
+                    "height": 2250,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/117865098025447815164\">MY WORLD</a>"
+                    ],
+                    "photo_reference": "Aap_uEAbHNKg1VhJ59japcIZ5lXRNRnmHBV4Wf9a--Z-QzgFbZne8RGK8b2DUzgDxehlKYRiXrI7_orVzWy5WK0EgZW96vZtZTdF4qKva6IfXyvF2AMBxdrfdEyhniBvZoFdPeRY6IDvVZ5vAqdS0WUvpOrUUVRpOqpp0b-giG1UAN_5pi47",
+                    "width": 4000
+                }
+            ],
+            "place_id": "ChIJxU3057fvJA0R7g_zK6FFUQU",
+            "plus_code": {
+                "compound_code": "CPV5+WG Guimaraes",
+                "global_code": "8CHHCPV5+WG"
+            },
+            "rating": 0,
+            "reference": "ChIJxU3057fvJA0R7g_zK6FFUQU",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Penha, 4810, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.3745672,
+                    "lng": -8.308207399999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.37591012989272,
+                        "lng": -8.306894620107277
+                    },
+                    "southwest": {
+                        "lat": 41.37321047010727,
+                        "lng": -8.309594279892721
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Penha",
+            "place_id": "ChIJzexMMMPtJA0RxOBXihgXtNk",
+            "plus_code": {
+                "compound_code": "9MFR+RP Guimaraes",
+                "global_code": "8CHH9MFR+RP"
+            },
+            "rating": 0,
+            "reference": "ChIJzexMMMPtJA0RxOBXihgXtNk",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "R. de Santa Apolónia 96-126, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4444535,
+                    "lng": -8.3246152
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44580492989272,
+                        "lng": -8.323296070107279
+                    },
+                    "southwest": {
+                        "lat": 41.44310527010727,
+                        "lng": -8.325995729892723
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Quinta de Santa Apolónia",
+            "photos": [
+                {
+                    "height": 1440,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/109811325083849446136\">Jose. Castro Pinheiro Pinheiro</a>"
+                    ],
+                    "photo_reference": "Aap_uEDMj7h2D9w3-XzbAKeSG4if_vHUSngfAFLSCKfft6O32u_QTuHyI02fRXlZKNdfb1lk1oOskdNHHMM46NjLvn9MtjfsVxjaugWO9gXoWxTxfPL5TJC3wjM2kDjSIDOEBaxIzk0BYVf6g5FsNQFz_r_eXpxSHIKjvSpbk08_-i1i5i-0",
+                    "width": 1440
+                }
+            ],
+            "place_id": "ChIJj5yn2bHxJA0Rm94VT1MytD4",
+            "plus_code": {
+                "compound_code": "CMVG+Q5 Guimaraes",
+                "global_code": "8CHHCMVG+Q5"
+            },
+            "rating": 4,
+            "reference": "ChIJj5yn2bHxJA0Rm94VT1MytD4",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Serzedelo",
+            "geometry": {
+                "location": {
+                    "lat": 41.4049329,
+                    "lng": -8.346690799999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.40634457989272,
+                        "lng": -8.345122270107279
+                    },
+                    "southwest": {
+                        "lat": 41.40364492010728,
+                        "lng": -8.347821929892723
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Senhoras do monte, miradouro",
+            "photos": [
+                {
+                    "height": 4096,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/116292346440389451763\">Joao Rocha</a>"
+                    ],
+                    "photo_reference": "Aap_uEBzr9SzlurqVc-ERzWD2IYQRDvvkdzSX16giuU3HyEPYeFz8K54r5nate48PUYjNBBZ_P63W55pEtDwRbgcvygVq1Oy6ZY26vGq3dbtof4hLRiNFkZsQq4hDLxg2Wbp-TGZoaPmJ7b3U47xW624KKRpwAu-Mrg7xzFTugAfJwGur7oW",
+                    "width": 3072
+                }
+            ],
+            "place_id": "ChIJw7b1Se7xJA0RYwHeSmo5xeo",
+            "plus_code": {
+                "compound_code": "CM33+X8 Serzedelo",
+                "global_code": "8CHHCM33+X8"
+            },
+            "rating": 5,
+            "reference": "ChIJw7b1Se7xJA0RYwHeSmo5xeo",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 1
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Unnamed Road, 4820",
+            "geometry": {
+                "location": {
+                    "lat": 41.502946,
+                    "lng": -8.224982899999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.50431417989272,
+                        "lng": -8.223649120107277
+                    },
+                    "southwest": {
+                        "lat": 41.50161452010727,
+                        "lng": -8.226348779892721
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Baloiço 440 - \"O Amor Que Nos Une\"",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 4160,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/115219667975542433592\">Avelino Fernandes</a>"
+                    ],
+                    "photo_reference": "Aap_uEDpZYRcG72hx8n_uVAdo-eo-UDdlzT1O4_2ErH3tB_d4gSkeJvmuNEAvzXh7tO-__DB8HGPdhDXqRkkTE8z0_l5iIfYvj8_9i93o2USn5wQiydBWHlJ-xEqTajm7fe2hcHI47ovb66xN5_6a6dpHny4RmY1Z8C4jzHD32oOTMA6eqFv",
+                    "width": 3120
+                }
+            ],
+            "place_id": "ChIJRTT37z7lJA0RihY0EmEIwEk",
+            "plus_code": {
+                "compound_code": "GQ3G+52 Travassós",
+                "global_code": "8CHHGQ3G+52"
+            },
+            "rating": 4.6,
+            "reference": "ChIJRTT37z7lJA0RihY0EmEIwEk",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 160
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Largo do Toural 78, 4810-225 Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4414448,
+                    "lng": -8.2954512
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.44277552989271,
+                        "lng": -8.294157570107277
+                    },
+                    "southwest": {
+                        "lat": 41.44007587010727,
+                        "lng": -8.296857229892721
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Chafariz do Toural",
+            "photos": [
+                {
+                    "height": 3456,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/104426079276440900122\">Benjamín González</a>"
+                    ],
+                    "photo_reference": "Aap_uEA-uz0jfzmbbswkJDCfGWP1HvZiiodLqyLrIv43i3e4Dyk9gPk1INOW-URAmhXOjJENv6zDl1eHTsC7u7_yOWjLyEEXdjPwgZDrsJPM4JCNswYdymwIj5IqoEJIZ2gm2li3T2LvQWKjyi1y-8vqgjQY_Kdsdwk6nnOyxcj2HQO9F70",
+                    "width": 5184
+                }
+            ],
+            "place_id": "ChIJKf9fUNzvJA0RAgZ6CxVhEBk",
+            "plus_code": {
+                "compound_code": "CPR3+HR Guimaraes",
+                "global_code": "8CHHCPR3+HR"
+            },
+            "rating": 5,
+            "reference": "ChIJKf9fUNzvJA0RAgZ6CxVhEBk",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 2
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "R. Cónego Dr. Manuel Faria 540, 4800-040 Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4497261,
+                    "lng": -8.295570399999999
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.45107592989272,
+                        "lng": -8.294220570107276
+                    },
+                    "southwest": {
+                        "lat": 41.44837627010727,
+                        "lng": -8.296920229892722
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Parque da Quintã",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 3264,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/109772545509839267869\">Mariana Tofan</a>"
+                    ],
+                    "photo_reference": "Aap_uEB6o4Nq5Xs50-D83Io8U5GHLIx5S80CsPpx2yCT0AGpK0_spLAn1exkwi_DSjXRb3KLPdCxTkDO6D5AXCc4ku1mB1p0gFBvkuyfoqolkEG6OIqmSh-GsaJmOUnkiBgN6G6tHx-_22SKyQ0vwc-ztrAN-_iVhIJTflOnFtSrbN4cieE",
+                    "width": 2448
+                }
+            ],
+            "place_id": "ChIJH1Pbse_vJA0RlpmxTA1SmGM",
+            "plus_code": {
+                "compound_code": "CPX3+VQ Guimaraes",
+                "global_code": "8CHHCPX3+VQ"
+            },
+            "rating": 4,
+            "reference": "ChIJH1Pbse_vJA0RlpmxTA1SmGM",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 296
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Nespereira",
+            "geometry": {
+                "location": {
+                    "lat": 41.4119413,
+                    "lng": -8.3361239
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.41320065000001,
+                        "lng": -8.331527749999994
+                    },
+                    "southwest": {
+                        "lat": 41.40816324999999,
+                        "lng": -8.33765595
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Miradouro, senhoras do monte",
+            "place_id": "ChIJDxn9PfbxJA0RVtMa5YeQvnc",
+            "plus_code": {
+                "compound_code": "CM67+QH Nespereira",
+                "global_code": "8CHHCM67+QH"
+            },
+            "rating": 0,
+            "reference": "ChIJDxn9PfbxJA0RVtMa5YeQvnc",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "N101-2 17, 4810, Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4328602,
+                    "lng": -8.268399500000001
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.43413867989272,
+                        "lng": -8.267150470107278
+                    },
+                    "southwest": {
+                        "lat": 41.43143902010728,
+                        "lng": -8.269850129892722
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Casa das Estampas",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 2250,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/117324425150624289092\">Manuel Soares</a>"
+                    ],
+                    "photo_reference": "Aap_uEC8DJqaiimzWeyTuygfA6PP2g-gt99hPAIZm7WLNZX6bSjT0O0ZD555W-T98ZYtDJMWja_vc9nKXO2Qb-iwIqQE8KXKhAffNrXOoET047i6tu91NY7PywtiXeArmWZCdF7ocJ1hrpapBIqFrKAbAXitsCJ3OQI4frMxCcmT_bOiB7BI",
+                    "width": 4000
+                }
+            ],
+            "place_id": "ChIJq0iKSXXvJA0RMjYN_bM7Bek",
+            "plus_code": {
+                "compound_code": "CPMJ+4J Guimaraes",
+                "global_code": "8CHHCPMJ+4J"
+            },
+            "rating": 0,
+            "reference": "ChIJq0iKSXXvJA0RMjYN_bM7Bek",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 0
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "R. Nossa Sra. de Fátima 61, 4800-180 Fermentões",
+            "geometry": {
+                "location": {
+                    "lat": 41.4585873,
+                    "lng": -8.3125868
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.45990032989273,
+                        "lng": -8.311245870107278
+                    },
+                    "southwest": {
+                        "lat": 41.45720067010728,
+                        "lng": -8.313945529892722
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Museu da Agricultura da Casa do Povo de Fermentões",
+            "photos": [
+                {
+                    "height": 4618,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/107261096084819132076\">Tiago Salgado</a>"
+                    ],
+                    "photo_reference": "Aap_uEC0POLVV10vt_Q9D4g3s0dTJTciNOI6q9Js86HgDZU8BWTkn_gDn3mCnp1wud4nJYakTy7gFjJ4JC-yfc99QBj9i-vIDNEGr17BQiwrgXp3_xgcU1ZD7djQYyI7LMKQac0aTLLdnonsZPWWscsUahbK_d95xiIz4_wEWsStExBqam7u",
+                    "width": 3464
+                }
+            ],
+            "place_id": "ChIJU4mpfE7kJA0RLIfubziSHtE",
+            "plus_code": {
+                "compound_code": "FM5P+CX Fermentões",
+                "global_code": "8CHHFM5P+CX"
+            },
+            "rating": 4.4,
+            "reference": "ChIJU4mpfE7kJA0RLIfubziSHtE",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 32
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "formatted_address": "Tv. de Messoulo, 4835-242 Guimarães",
+            "geometry": {
+                "location": {
+                    "lat": 41.4270947,
+                    "lng": -8.3254701
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 41.42850877989272,
+                        "lng": -8.32416652010728
+                    },
+                    "southwest": {
+                        "lat": 41.42580912010728,
+                        "lng": -8.326866179892724
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Mistério do Telhado Desaparecido",
+            "opening_hours": {
+                "open_now": true
+            },
+            "photos": [
+                {
+                    "height": 1600,
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/106962586942505273473\">A Google User</a>"
+                    ],
+                    "photo_reference": "Aap_uECuAt8qemE8MF4n-dC0eLJDgucUO-P_bWIDcLJMl-5n-Fm9if-7FH-HAYv7vrcrKEXevqil4L5_a7qH-ezQd609HE8ynlWyhC4D3PZCqG40xuy6-9eTXBClIYBRgfyOAUjDXNAsLkpHAptBsS9aS794KoYfaSZwfP1sbMfre01hTSLt",
+                    "width": 1200
+                }
+            ],
+            "place_id": "ChIJLx02BUrxJA0R3d5BV3nLDFI",
+            "plus_code": {
+                "compound_code": "CMGF+RR Guimaraes",
+                "global_code": "8CHHCMGF+RR"
+            },
+            "rating": 5,
+            "reference": "ChIJLx02BUrxJA0R3d5BV3nLDFI",
+            "types": [
+                "tourist_attraction",
+                "point_of_interest",
+                "establishment"
+            ],
+            "user_ratings_total": 6
+        }
+    ],
+    "status": "OK"
+}

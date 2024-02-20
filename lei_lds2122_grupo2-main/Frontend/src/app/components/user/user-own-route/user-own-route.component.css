@@ -1,0 +1,48 @@
+a.btn {
+  text-align: center;
+  min-width: 100px;
+}
+
+a.btn:hover {
+  background-color: var(--greenMain);
+}
+
+li a.btn {
+  display: block
+}
+
+ul.dropdown-menu{
+  padding: 0;
+}
+
+.dropdown-menu {
+  min-width: max-content;
+}
+
+/* Small screen */
+@media (max-width: 766px) {
+  .divRouteInformation {
+    flex-direction: column !important;
+  }
+
+  .divDescription {
+    font-size: smaller;
+  }
+
+  h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+      margin-top: 0.25rem;
+  }
+}
+
+/* Large screen */
+@media (min-width: 767px) {
+  .smallScreen {
+    display: none !important;
+  }
+
+  .divOptions a {
+    margin-right: 0 !important;
+  }
+}

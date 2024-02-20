@@ -1,0 +1,164 @@
+<div *ngIf="!stateVariables.backendConnection" class="alert alert-danger alert-dismissible d-flex align-items-center"
+    role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+        <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </svg>
+    <div class="ms-3">
+        O servidor não responde
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="d-flex flex-column w-100 h-100 align-items-center">
+    <div id="divCurrentTime" class="d-flex container-fluid justify-content-start align-items-center w-100 p-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clock me-2 mt-1"
+            viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"></path>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"></path>
+        </svg>
+        <h2 class="m-0 d-flex align-items-center">
+            {{time.hours}}:{{time.minutes}}:{{time.seconds}}
+        </h2>
+    </div>
+    <div id="mainDiv" class="d-flex flex-wrap w-100">
+        <div id="divMap" class="w-40 px-3 mb-5">
+            <app-map id="mapComponent"></app-map>
+        </div>
+        <div id="divRouteList" class="d-flex w-60 flex-column px-3">
+            <h2 class="mb-4 w-100 text-center">
+                {{routeName}}
+            </h2>
+            <div class="w-100 h-100">
+                <div *ngFor="let place of places; let i = index" class="d-flex w-100 align-items-center mb-3">
+                    <div class="w-30">
+                        <img [src]="place.url" [alt]="place.name" class="placeImg rounded">
+                    </div>
+                    <div class="cardContainer card w-70">
+                        <div class="divPlaceInfo">
+                            <div>
+                                <h5 class="m-0">{{ place.name }}</h5>
+                                <div class="d-flex flex-wrap mt-2">
+                                    <div *ngFor="let categorie of place.categories">
+                                        <span *ngIf="translations[categorie] != null"
+                                            class="me-3 mb-1 badge text-secondary border rounded">
+                                            {{ translations[categorie] }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divTimeInputs">
+                            <div>
+                                <input disabled type="time" class="time form-control" name="startTime"
+                                    [(ngModel)]="places[i].startTime">
+                            </div>
+                            <div>
+                                <input disabled type="time" class="time form-control" name="finishTime"
+                                    [(ngModel)]="places[i].finishTime">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-100">
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault"
+                            [(ngModel)]="selectedPlaces[i]">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!stateVariables.finalizingRoute" class="d-flex justify-content-end ">
+                <button id="btnUse" class="btn btn-green" (click)="finalizeRoute()">Finalizar Rota</button>
+            </div>
+
+            <div *ngIf="stateVariables.finalizingRoute" class="d-flex justify-content-end mx-3">
+                <div class="spinner-border">
+                </div>
+            </div>
+
+            <div id="modal" class="modal fade" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <h3 class="modal-header text-center">
+                            Quer marcar todos os locais como visitados?
+                            <button type="button" class="btn-close ms-1" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </h3>
+                        <div class="modal-body w-100 d-flex justify-content-between">
+                            <button class="btn px-4 text-light" style="font-weight: bold; background-color: goldenrod;"
+                                (click)="useRoute(false)" data-bs-dismiss="modal">Não, apenas os
+                                que selecionei</button>
+                            <button class="btn btn-green px-4" (click)="useRoute(true)"
+                                data-bs-dismiss="modal">Sim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loginModal" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Inicie sessão para guardar esta informação
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <app-login [noRedirect]="true" [maxWidth]="true"></app-login>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                (click)="navigateHome()">Finalizar sem iniciar sessão</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sucessModal" data-bs-backdrop="static" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="alert alert-success d-flex align-items-center m-0" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </svg>
+                            <div class="ms-3">
+                                Rota utilizada com sucesso <br>
+                                Será redirecionado em breve
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="unsucessModal" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="alert alert-danger d-flex align-items-center m-0" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            <div class="ms-3">
+                                Não foi possível guardar a informação da rota utilizada.
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-green" style="font-weight: normal;" data-bs-dismiss="modal"
+                                (click)="finalizeRoute()">Voltar a tentar</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal" (click)="navigateHome()">Ignorar e
+                                voltar à página inicial</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div id="mainDiv" class="w-100 d-flex justify-content-center backgroundlightgray">
+    <div class="d-flex flex-column w-100 mt-2" style="max-width: 1200px;">
+        <div class="d-flex flex-row w-100 justify-content-center align-items-center">
+
+            <h1 class="mx-3 text-center">{{place?.name}}</h1>
+
+            <div *ngIf="isLoggedIn" class="m-1 rounded" id="btnClass">
+                <button type="button" class="btn btn-green w-100" [class]="interested ? 'btnGreenClass':'btnRedClass'"
+                    (click)="interested ? removeInterested(): addInterested()" style="width: 140px;"
+                    [disabled]="changingInterested">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                </button>
+
+
+            </div>
+        </div>
+        <div *ngIf="isLoggedIn" class="d-flex justify-content-center align-items-center mb-2">
+            <span>Marcar como visitado</span>
+            <input class="form-check-input" type="checkbox" id="flexCheckDefault" [checked]="visited" 
+                (click)="visited ? removeVisited(): addVisited()">
+        </div>
+        <div id="divCategories" class="d-flex align-items-center justify-content-center mb-5 mt-3" *ngIf="placeVM">
+            <app-categories [categories]="placeVM.types" [customClass]="'badge-green badge-large'">
+            </app-categories>
+        </div>
+        <div id="divInfo" class="d-flex w-100 justify-content-center align-items-center p-3">
+            <div class="px-3" style="height: 500px;">
+                <div id="divImage" class="m-0 backgroundImage h-100"
+                    [style.background-image]="place ? 'url(' + place.url + ')' : ''">
+                </div>
+            </div>
+            <div id="divMap" class="px-3 justify-content-center align-items-center" style="height: 500px;">
+                <app-map id="mapComponent"></app-map>
+            </div>
+        </div>
+    </div>
+</div>

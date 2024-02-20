@@ -1,0 +1,347 @@
+<div id="divMain" class="d-flex backgroundlightgray">
+
+    <!-- Generate Route form -->
+    <div *ngIf="(sizing.screenWidth > 766)  || (sizing.screenWidth <= 766 && !generatedRoute)" id="divGenerateRoute"
+        [ngClass]="(sizing.screenWidth <= 766) ? 'w-100': 'w-40' " class="p-5 d-flex flex-column align-items-center">
+        <h1 class="mb-5">Gerar Rota</h1>
+        <form class="w-100 d-flex flex-column align-items-center">
+
+            <!-- Route Name -->
+            <div class="mb-3 w-100">
+                <label for="routeName" class="form-label">Nome da Rota</label>
+                <input id="routeName" type="text" class="form-control shadow-sm" name="routeName"
+                    [ngClass]="alerts.missingName == undefined ? '' : (alerts.missingName) ? 'is-invalid' : 'is-valid'"
+                    [(ngModel)]="generateRouteVM.name" placeholder="Nome da rota"
+                    (keyup)="(generateRouteVM.name == '') ? (alerts.missingName = true) : (alerts.missingName = false) ">
+            </div>
+
+            <!-- Start Date -->
+            <div class="mb-3 w-100 d-flex flex-column">
+                <label class="form-label">Data de Visita</label>
+                <input type="date" class="form-control shadow-sm" [valueAsDate]="generateRouteVM.startTime">
+            </div>
+
+            <!-- End Date -->
+            <div class="mb-3 w-100 d-flex flex-column">
+                <div class="d-flex">
+                    <div class="w-50 me-2">
+                        <div class="w-100 text-center">
+                            <span class="w-100">Hora de Início</span>
+                        </div>
+                        <input [ngxTimepicker]="startTimePicker" [format]='24' name="startTime"
+                            [(ngModel)]="dates.startTime" class="form-control text-center px-0 shadow-sm">
+                        <ngx-material-timepicker #startTimePicker></ngx-material-timepicker>
+                    </div>
+
+                    <div class="w-50 ms-2">
+                        <div class="w-100 text-center">
+                            <span class="w-100">Hora de Fim</span>
+                        </div>
+                        <input [ngxTimepicker]="endTimePicker" [format]='24' name="endTime"
+                            [(ngModel)]="dates.finishTime" class="form-control text-center px-0 shadow-sm">
+                        <ngx-material-timepicker #endTimePicker></ngx-material-timepicker>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Include visited places checkbox -->
+            <div class="mb-3 w-100 d-flex align-items-center">
+                <label for="visitedPlacesInput" class="me-2">Incluir locais já visitados</label>
+                <input id="visitedPlacesInput" type="checkbox" class="form-check-input"
+                    [checked]="generateRouteVM.visitedPlaces"
+                    (change)="generateRouteVM.visitedPlaces = !generateRouteVM.visitedPlaces">
+            </div>
+
+            <!-- Select categories button, this button toogles a Modal -->
+            <button type="button" id="btnSelectCategories" class="w-100 btn btn-dark shadow-sm" data-bs-toggle="modal"
+                data-bs-target="#categoryModal">
+                Selecionar categorias
+            </button>
+
+            <!-- Displays all selected categories for this route -->
+            <div class="d-flex flex-wrap w-100">
+                <div *ngIf="generateRouteVM.categories.length == 0" class="w-100 text-center">
+                    (Nenhuma categoria escolhida)
+                </div>
+                <div *ngFor="let category of generateRouteVM.categories">
+                    <span *ngIf="translations[category] != null" class="mb-1 me-1 badge text-secondary border rounded"
+                        style="background-color: white;">
+                        {{ translations[category] }}
+                    </span>
+                </div>
+            </div>
+
+            <div *ngIf="generateRouteVM.categories.length != 5" class="w-100 text-center">
+                <span class="text-danger">É necessário selecionar 5 categorias</span>
+            </div>
+
+
+            <!-- Category choose Modal -->
+            <div id="categoryModal" class="modal fade" tabindex="-1" aria-labelledby="btnSelectCategories"
+                aria-hidden="true">
+                <div class="modal-dialog d-flex flex-column">
+                    <div *ngIf="alerts.maxCategories" class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#842029"
+                            class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path
+                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+                            <path
+                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+                        </svg>
+                        <span class="ms-2">O máximo são 5 categorias</span>
+                    </div>
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center">
+                            <h3 class="text-center">Clique para selecionar!</h3>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div id="option{{i}}" *ngFor="let category of translations | keyvalue; let i = index"
+                                [ngClass]="i == translations.length - 1 ? 'p-2 border-0': 'p-2 border-bottom' "
+                                class="d-flex justify-content-between" (click)="toogleCategory(category.key, i)">
+                                <span>{{category.value}}</span>
+                            </div>
+
+                            <div class="mt-3 d-flex justify-content-between">
+                                <button class="btn btn-dark shadow-sm" (click)="removeAllCategories()">
+                                    Limpar
+                                </button>
+                                <button class="btn btn-green shadow-sm" data-bs-dismiss="modal" aria-label="Close">
+                                    Ok
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Route Button -->
+            <button id="btnGenerate" type="submit" class="d-flex align-items-center justify-content-center btn btn-green shadow-sm mt-4" (click)="generateRoute()"
+                [disabled]="generateHelper.generatingRoute">
+                <div *ngIf="generateHelper.generatingRoute" class="spinner-border me-3" role="status" style="width: 20px; height: 20px;">
+                </div>
+                Gerar
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Generated Route Div-->
+    <div *ngIf="(sizing.screenWidth > 766)  || (sizing.screenWidth <= 766 && generatedRoute)"
+        [ngClass]="(sizing.screenWidth <= 766) ? 'w-100 flex-grow-1': 'flex-grow-1' "
+        class="d-flex justify-content-center" [style]="generatedRoute==null? 'visibility: hidden':''">
+
+        <div class="w-100 h-100 pt-5 d-flex flex-column justify-content-between align-items-center"
+            style="max-width: 1050px;">
+
+            <!-- Route's name -->
+            <div class="w-100 px-2">
+                <input id="routeName2" type="text" class="w-100 fs-1 text-center form-control backgroundlightgray"
+                    name="routeName2"
+                    [ngClass]="alerts.missingName == undefined ? '' : (alerts.missingName) ? 'is-invalid' : 'is-valid'"
+                    [(ngModel)]="generateRouteVM.name" placeholder="Nome da rota"
+                    (keyup)="(generateRouteVM.name == '') ? (alerts.missingName = true) : (alerts.missingName = false) ">
+            </div>
+
+            <!-- Generated route and autocomplete div-->
+            <div id="divRoute" class="d-flex w-100 pt-1 px-2 pb-2 overflow-auto flex-column align-items-center"
+                style="height: 100px;">
+                {{ resizeRouteDiv() }}
+
+                <div class="w-100 d-flex justify-content-center">
+
+                    <!-- Autocomplete -->
+                    <div id="divSearchPlace" class="d-flex justify-content-between dropdown w-100 my-4">
+                        <div id="divInputGroup" class="input-group">
+                            <input id="autocomplete" type="text" class="form-control" placeholder="Procure um local"
+                                (click)="!autocomplete ? initAddPlaceAutoComplete(): ''">
+
+                            <button id="btnClearText" class="btn input-group-text"
+                                onclick="document.getElementById('autocomplete').value = ''">X</button>
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div>
+                            <button id="btnAddLocal" class="btn ms-4 shadow-sm" style="border-color: lightgray;"
+                                (click)="addPlace()">Adicionar Local</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Places in the route -->
+                <div *ngFor="let place of places; let i = index" class="d-flex w-100 align-items-center mb-3">
+
+                    <!-- Place Image -->
+                    <div class="w-30">
+                        <img [src]="place.url" onerror="this.src='/assets/images/noimage.jpg'" alt="imagem não existe"
+                            class="placeImg rounded shadow-sm border">
+                    </div>
+
+                    <div class="cardContainer card w-70 shadow-sm">
+
+                        <!-- Place information -->
+                        <div class="divPlaceInfo">
+                            <div>
+                                <h5 class="m-0">{{ place.name }}</h5>
+                                <div class="d-flex flex-wrap mt-2">
+                                    <div *ngFor="let category of place.categories">
+                                        <span *ngIf="translations[category] != null"
+                                            class="me-3 mb-1 badge text-secondary border rounded">
+                                            {{ translations[category] }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divButtons" class="d-flex w-100 justify-content-between btnPlaceOption">
+
+                                <!-- Green replace button -->
+                                <button class="btn p-2 flex-grow-1" (click)="replaceRandom(i)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                        fill="var(--greenMain)" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                        <path fill-rule="evenodd"
+                                            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                                    </svg>
+                                </button>
+
+                                <!-- Dark Organge replace button -->
+                                <button id="btnReplacePlace" class="btn p-2 flex-grow-1 btnPlaceOption"
+                                    (click)="displayReplaceModal(i)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="darkorange"
+                                        class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+                                    </svg>
+                                </button>
+
+                                <!-- Delete place button -->
+                                <button class="btn p-2 flex-grow-1 btnPlaceOption" (click)="delete(i)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="red"
+                                        class="bi bi-x-octagon" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Start and finish visit time for a place -->
+                        <div class="divTimeInputs">
+                            <div>
+                                <input type="time" class="time form-control" name="startTime"
+                                    [(ngModel)]="place.startTime" (change)="this.sortPlaces()">
+                            </div>
+                            <div>
+                                <input type="time" class="time form-control" name="finishTime"
+                                    [(ngModel)]="place.finishTime">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Replace Place Modal -->
+                <div class="modal fade" id="modalReplacePlace" aria-labelledby="btnReplacePlace" aria-hidden="true">
+                    <div class="modal-dialog m-5" style="max-width: none !important; min-height: 500px;">
+                        <div class="modal-content">
+
+                            <!-- Title -->
+                            <div class="modal-header d-flex w-100 justify-content-center">
+                                <h1 class="modal-title" id="exampleModalLabel">A substituir local</h1>
+                            </div>
+
+                            <!-- Replace Place Div -->
+                            <div class="modal-body">
+                                <div class="d-flex mb-5">
+
+                                    <!-- Place to be replaced image -->
+                                    <div class="w-40 d-flex flex-column align-items-center">
+                                        <img [src]="replaceInfo.replacingPlace?.url"
+                                            onerror="this.src='/assets/images/noimage.jpg'"
+                                            alt="Local a ser substituido" class="rounded placeReplaceImg shadow-sm">
+                                        <span class="fs-5">{{replaceInfo.replacingPlace?.name}}</span>
+                                    </div>
+
+                                    <!-- Arrow -->
+                                    <div class="w-20 d-flex justify-content-center align-items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="70%" height="70%"
+                                            fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- New Place -->
+                                    <div class="w-40 d-flex flex-column align-items-center">
+                                        <div *ngIf="replaceInfo.loading"
+                                            class="h-100 d-flex justify-content-center align-items-center">
+                                            <div class="spinner-border" role="status">
+                                            </div>
+                                        </div>
+                                        <img *ngIf="!replaceInfo.loading && replaceInfo.newPlace"
+                                            [src]="replaceInfo.newPlace?.url" alt="Novo Local"
+                                            class="rounded placeReplaceImg shadow-sm">
+                                        <span *ngIf="!replaceInfo.loading"
+                                            class="fs-5 text-center">{{replaceInfo.newPlace?.name}}</span>
+                                    </div>
+                                </div>
+
+                                <!-- Autocomplete -->
+                                <div class="input-group">
+                                    <input id="replaceAutocomplete" type="text" class="form-control"
+                                        placeholder="Procure um local"><button id="btnClearText"
+                                        class="btn input-group-text"
+                                        onclick="document.getElementById('replaceAutocomplete').value = ''">X</button>
+                                    <span class="input-group-text">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path
+                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!-- Replace options -->
+                            <div class="modal-footer d-flex justify-content-center">
+                                <div id="replaceButtons" class="d-flex">
+                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary"
+                                        (click)="!replaceInfo.replacing ? replace() : '' ">
+                                        <span *ngIf="!replaceInfo.replacing">Substituir</span>
+                                        <div *ngIf="replaceInfo.replacing" class="spinner-border" role="status">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex w-100 justify-content-evenly" style="margin-bottom: 24px;">
+                <button type="button" class="btn btn-danger shadow-sm" (click)="rejectRoute()">
+                    Recusar
+                </button>
+                <button type="button" class="btn btn-green shadow-sm" (click)="acceptRoute()">
+                    Utilizar
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

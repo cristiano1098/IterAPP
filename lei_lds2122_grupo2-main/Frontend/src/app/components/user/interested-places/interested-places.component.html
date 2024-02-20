@@ -1,0 +1,41 @@
+<div id="divMain" class="d-flex justify-content-center backgroundlightgray p-5">
+    <div class="w-100" style="max-width: 1200px;">
+        <h1 class="w-100 text-center pb-2" style="border-bottom: 1px solid lightgray;">Locais de Interesse</h1>
+        <div class="row row-cols-1 row-cols-md-4 g-4" style="height: 100%  position-relative">
+            <div class="col" *ngFor="let place of places; let i = index">
+                <div class="card ">
+
+                    <div class="w-100 " style="position:relative;">
+                        <img [src]="place.photoURL" onerror="this.src='/assets/images/noimage.jpg'"
+                            alt="imagem não existe" class="placeImg rounded shadow-sm border">
+                        <!--<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#FFFFFF"
+                            class="bi bi-check-lg AClass" viewBox="0 0 16 16">
+                            <path
+                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                        </svg>-->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF"
+                            class="bi bi-star-fill  AClass" viewBox="0 0 16 16"
+                            style="margin-top: 5px; margin-right: 5px;">
+                            <path
+                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                        </svg>
+
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4 class="card-title">
+                                {{place.name}}
+                            </h4>
+
+                            <a href="/place/{{place.placeID}}" class="stretched-link"></a>
+
+                        </div>
+                        <app-categories [categories]="place.categories" class="mb-4"></app-categories>
+                        <app-rating [rating]="place.rating" [starSize]="18"></app-rating>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

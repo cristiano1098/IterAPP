@@ -1,0 +1,147 @@
+<div id="divMain" class="d-flex pt-4 backgroundlightgray" style="min-height: 887px;">
+
+    <!-- Left Menu -->
+    <div id="leftColumn" class="w-20 px-3" style="min-width: 200px;">
+
+        <!-- Left Menu items -->
+        <ul class="list-group list-group-flush rounded border shadow-sm">
+            <a href="/user/{{userName}}" class="list-group-item list-group-item-action">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                <span> Meu Perfil</span>
+            </a>
+            <a href="/user/followers" class="list-group-item list-group-item-action">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd"
+                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                </svg>
+                <span> Seguidores</span>
+            </a>
+            <a href="/user/following" class="list-group-item list-group-item-action">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd"
+                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                </svg>
+                <span> A seguir</span>
+            </a>
+
+            <!-- Show more/less Items Button -->
+            <button (click)="showMore()" type="button" class="list-group-item list-group-item-action">
+                <div *ngIf="!showingMore">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                    <span> Ver mais</span>
+                </div>
+                <div *ngIf="showingMore">
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                    </svg>
+                    <span> Ver menos</span>
+                </div>
+            </button>
+
+            <!-- Show more menu -->
+            <ul *ngIf="showingMore" class="list-group list-group-flush">
+                <a href="user/routes" class="list-group-item list-group-item-action">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-dash" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                    </svg>
+                    <span> Minhas rotas</span>
+                </a>
+
+                <a href="/user/routes/favorite" class="list-group-item list-group-item-action">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-dash" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                    </svg>
+                    <span> Rotas favoritas</span>
+                </a>
+
+                <a href="user/routes/used" class="list-group-item list-group-item-action">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-dash" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                    </svg>
+                    <span> Rotas utilizadas</span>
+                </a>
+
+                <a href="/user/places/interest" class="list-group-item list-group-item-action">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-dash" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                    </svg>
+                    <span> Locais de interesse</span>
+                </a>
+            </ul>
+        </ul>
+    </div>
+
+    <!-- Center Div wich contains the routes -->
+    <div id="middleColumn" class="w-80 ps-3 pe-5">
+
+        <!-- Crete and generate route buttons -->
+        <div class="card shadow-sm border-1 mb-5">
+            <div id="divButtonsBody" class="card-body d-flex flex-wrap justify-content-evenly">
+                <a href="/route/create" type="button"
+                    class="w-50 btn btn-custom btn-lg d-flex justify-content-center align-items-center"
+                    style="min-width: 200px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#D6DC00"
+                        class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                    </svg>
+                    <div class="ms-2 h-100 d-flex align-items-center">Criar Rota</div>
+                </a>
+                <a href="/route/generate" type="button"
+                    class="w-50 btn btn-custom btn-lg d-flex justify-content-center align-items-center"
+                    style="min-width: 200px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#8bc34a"
+                        class="bi bi-file-play-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM6 5.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43V5.884z" />
+                    </svg>
+                    <div class="ms-2 h-100 d-flex">Gerar Rota</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Div with the routes cards -->
+        <div id="divRoutes" class="w-100">
+
+            <!-- Routes -->
+            <app-route-list></app-route-list>
+        </div>
+
+    </div>
+    <!-- Right Menu -->
+    <!-- <div class="w-20 px-3">
+        <ul class="list-group list-group-flush rounded border shadow-sm">
+            <a href="#" class="list-group-item list-group-item-action">
+                Item 1
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                Item 2
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                Item 3
+            </a>
+
+        </ul>
+    </div> -->
+</div>

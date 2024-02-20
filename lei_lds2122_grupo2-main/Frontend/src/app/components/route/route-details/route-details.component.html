@@ -1,0 +1,289 @@
+<div *ngIf="routeNotFound == undefined" class="w-100 d-flex justify-content-center p-2">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="routeNotFound == true" class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="my-4" style="font-family: Pacifico">A rota não foi encontrada</h1>
+    <a class="btn btn-green" href="/">Página inicial</a>
+</div>
+
+
+<div *ngIf="routeNotFound == false" class="d-flex justify-content-center w-100 backgroundlightgray">
+    <div id="mainDiv" class="d-flex flex-column w-100 p-3" style="max-width: 1500px;">
+
+        <!-- First Row -->
+        <div id="firstRow" class="d-flex w-100 mb-4 border-bottom">
+
+            <!-- Creator Info -->
+            <div class="d-flex flex-column align-items-center flex-grow-2 py-3 px-2" style="max-width: 9rem;">
+                <a href="user/{{routeVM?.routeResume?.userName}}">
+                    <img [src]="routeVM?.routeResume?.profilePhoto"
+                        onerror="this.src='/assets/images/avatarmasculine2.png'" alt="" class="profileImg shadow"></a>
+
+                <a class="mt-3 rounded-pill bg-green shadow px-2 rounded fw-bold" style="text-decoration: none;"
+                    href="user/{{routeVM?.routeResume?.userName}}">
+                    <span style="font-size: 0.9em; color: white;">@{{routeVM?.routeResume?.userName}}</span></a>
+            </div>
+
+            <!-- Route Resume Info -->
+            <div class="d-flex flex-column justify-content-between align-items-center flex-grow-1 p-3">
+                <div class="mb-4 d-flex flex-column align-items-center">
+                    <h1 class="mb-0">{{routeVM?.routeResume?.name}}</h1>
+                    <span *ngIf="routeVM" style="font-weight: 700">{{routeDate.toDateString()}}</span>
+                </div>
+                <app-categories [categories]="categories" [customClass]="'badge-green badge-large'" class="mb-4">
+                </app-categories>
+
+                <!-- Description Row -->
+                <div id="description" class="px-5 text-center">
+                    <span>{{routeVM?.routeResume?.description}}</span>
+                </div>
+            </div>
+
+            <!-- Route Evaluation -->
+            <div class="d-flex flex-column flex-grow-2 py-3">
+                <div class="w-100 d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center mb-4">
+                        <h5 style="min-width: max-content;">Avaliação média: {{routeVM?.routeResume?.averageRating}}
+                        </h5>
+                        <app-rating [rating]="routeVM?.routeResume?.averageRating" [starSize]="26"></app-rating>
+                    </div>
+
+                    <span>{{routeVM?.routeResume?.numberOfUses}} utilizações</span>
+                </div>
+
+                <!-- Add and Remove favorite -->
+                <div class="d-flex mt-5 w-100 justify-content-center mb-1" (mouseover)="setMouseOverFavoriteBtn(true)"
+                    (mouseleave)="setMouseOverFavoriteBtn(false)">
+
+                    <button id="btnRemoveFavorite" *ngIf="routeVM?.routeResume?.isFavourite" type="button"
+                        class="btn btn-green w-100" (click)="removeFavorite()" style="width: 140px;"
+                        [disabled]="changingFavorite">
+
+                        <svg *ngIf="this.changingFavorite || (!this.changingFavorite && !mouseOverFavoriteBtn)"
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                        </svg>
+
+                        <svg *ngIf="!this.changingFavorite && mouseOverFavoriteBtn" xmlns="http://www.w3.org/2000/svg"
+                            width="20" height="20" fill="currentColor" class="bi bi-bookmark-x-fill"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
+                        </svg>
+
+                        <span id="spanRemoveFavorite">Favorita</span>
+                    </button>
+
+                    <button id="btnAddFavorite" *ngIf="!routeVM?.routeResume?.isFavourite" type="button"
+                        class="btn btn-danger w-100" (click)="addFavorite()" style="width: 140px;">
+
+                        <svg *ngIf="this.changingFavorite || (!this.changingFavorite && !mouseOverFavoriteBtn)"
+                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z" />
+                        </svg>
+
+                        <svg *ngIf="!this.changingFavorite && mouseOverFavoriteBtn" xmlns="http://www.w3.org/2000/svg"
+                            width="20" height="20" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z" />
+                        </svg>
+
+                        <span id="spanAddFavorite">Não Favorita</span>
+
+                    </button>
+
+                </div>
+
+                <a href="/route/use/{{routeID}}" class="btn btn-primary">Utilizar rota</a>
+
+            </div>
+
+        </div>
+
+        <!-- Second Row -->
+        <div id="secondRow" class="w-100 d-flex flex-column mb-4 border-bottom">
+
+            <!-- First Row -->
+            <div class="w-100 d-flex mb-3">
+
+                <!-- Maps -->
+                <div class="w-40 me-1">
+                    <app-map></app-map>
+                </div>
+
+                <!-- Places -->
+                <div class="w-60 ms-1 overflow-auto" style="height: 500px;">
+                    <div *ngFor="let place of places; let i = index" class="d-flex w-100 align-items-center mb-3">
+
+                        <!-- Place Image -->
+                        <div class="w-30 h-100">
+                            <img [src]="place.url" onerror="this.src='/assets/images/noimage.jpg'"
+                                alt="imagem não existe" class="placeImg rounded shadow-sm border">
+                        </div>
+
+                        <div class="cardContainer card w-70 shadow-sm">
+
+                            <!-- Place information -->
+                            <div class="divPlaceInfo">
+                                <div>
+                                    <h5 class="m-0">{{ place.name }}</h5>
+                                    <div class="d-flex flex-wrap mt-2">
+                                        <div *ngFor="let category of place.categories">
+                                            <span *ngIf="translations[category] != null"
+                                                class="me-3 mb-1 badge text-secondary border rounded">
+                                                {{ translations[category] }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Start and finish visit time for a place -->
+                            <div class="divTimes">
+                                <div>
+                                    <span class="time form-control"> {{place.startTime}}</span>
+                                </div>
+                                <div>
+                                    <span class="time form-control"> {{place.finishTime}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Third Row -->
+        <div id="thirdRow" class="w-100 d-flex flex-column">
+            <div class="d-flex justify-content-between">
+                <h3>Estatísticas e comentários</h3>
+                <div class="d-flex">
+                    <div *ngIf="userEvaluation == -1 " class="d-flex flex-row">
+                        <h5 style="margin-right: 8px; margin-top: 4px;">A tua avaliação: </h5>
+                        <div class="d-flex" style="margin-right: 8px; margin-top: 4px;">
+                            <svg id="rate1Fill" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                fill="#D6DC00" class="bi bi-star-fill" viewBox="0 0 16 16" style="display: none;"
+                                (mouseleave)="selectRate(0)" (click)="evaluate(1)">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+
+                            <svg id="rate1" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#D6DC00"
+                                class="bi bi-star-fill" viewBox="0 0 16 16" (mouseover)="selectRate(1)"
+                                >
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                            <svg id="rate2Fill" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                fill="#D6DC00" class="bi bi-star-fill" viewBox="0 0 16 16" style="display: none;"
+                                (mouseleave)="selectRate(0)" (click)="evaluate(2)">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                            <svg id="rate2" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#D6DC00"
+                                class="bi bi-star" viewBox="0 0 16 16" (mouseover)="selectRate(2)"
+                                >
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                            <svg id="rate3Fill" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                fill="#D6DC00" class="bi bi-star-fill" viewBox="0 0 16 16" style="display: none;"
+                                (mouseleave)="selectRate(0)" (click)="evaluate(3)">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                            <svg id="rate3" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#D6DC00"
+                                class="bi bi-star" viewBox="0 0 16 16" (mouseover)="selectRate(3)"
+                                >
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                            <svg id="rate4Fill" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                fill="#D6DC00" class="bi bi-star-fill" viewBox="0 0 16 16" style="display: none;"
+                                (mouseleave)="selectRate(0)" (click)="evaluate(4)">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                            <svg id="rate4" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#D6DC00"
+                                class="bi bi-star" viewBox="0 0 16 16" (mouseover)="selectRate(4)">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                            <svg id="rate5Fill" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                fill="#D6DC00" class="bi bi-star-fill" viewBox="0 0 16 16" style="display: none;"
+                                (mouseleave)="selectRate(0)" (click)="evaluate(5)">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                            <svg id="rate5" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#D6DC00"
+                                class="bi bi-star" viewBox="0 0 16 16" (mouseover)="selectRate(5)">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+
+
+                        </div>
+                    </div>
+                    <div *ngIf="userEvaluation > 0 " class="d-flex flex-row">
+                        <h5 style="margin-right: 8px; margin-top: 4px;">A tua avaliação: </h5>
+                        <app-rating [rating]="userEvaluation" [starSize]="26" style="margin-right: 8px; margin-top: 4px;"></app-rating>
+                    </div>
+
+
+                </div>
+            </div>
+           
+
+            <!-- Stats and Comments -->
+            <div class="d-flex">
+
+                <!-- Stats -->
+                <div class="d-flex flex-column flex-grow-2 me-4" style="min-width: max-content;">
+                    <div class="d-flex flex-column mb-4">
+                        <h5>Avaliação média: {{routeVM?.routeResume?.averageRating}}</h5>
+                        <app-rating [rating]="routeVM?.routeResume?.averageRating" [starSize]="26"></app-rating>
+                    </div>
+
+                    <div class="d-flex">
+                        <h5>Utilizações: {{routeVM?.routeResume?.numberOfUses}}</h5>
+                    </div>
+
+                </div>
+
+                <!-- Comments -->
+                <div class="d-flex flex-column flex-grow-1 border">
+
+                    <div class="d-flex flex-row justify-content-center w-100 border-bottom p-4"
+                        style="background-color: white;">
+                        <img [src]="commentHelper.userPhoto" onerror="'/assets/images/avatarmasculine2.png'"
+                            alt="perfil" class="profilePic me-3 align-self-top">
+                        <div class="d-flex flex-grow-1 flex-column align-items-center">
+                            <textarea class="form-control d-flex flex-grow-1 mb-2" rows="3" name="comment"
+                                [(ngModel)]="commentHelper.commentRouteVM.comment" placeholder="Faça um comentário..."
+                                (keyup)="commentHelper.errorCommenting = false"></textarea>
+                            <button class="btn w-100"
+                                [ngClass]="commentHelper.commentRouteVM.comment == '' ? 'btn-light': 'btn-primary'"
+                                (click)="sendComment()">Publicar</button>
+
+                            <span *ngIf="commentHelper.errorCommenting" class="text-danger mt-1">Não foi possível
+                                publicar o comentário</span>
+                        </div>
+                    </div>
+
+                    <app-comment-list class="w-100 px-4 pt-4 border-bottom" style="background-color: white;"
+                        [comments]="(routeVM != undefined) && routeVM.comments != undefined? routeVM.comments : []">
+                    </app-comment-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

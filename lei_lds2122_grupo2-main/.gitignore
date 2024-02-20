@@ -1,0 +1,18 @@
+bin
+obj
+.DS_Store
+Documentos/Editaveis/~$ftware Requirements Specification.docx
+Frontend/node_modules/*
+Frontend/package-lock.json
+Frontend/.angular/*
+
+Backend/obj/project.nuget.cache
+Backend/obj/project.nuget.cache
+Backend/obj/Backend.csproj.nuget.g.props
+Backend/obj/Backend.csproj.nuget.dgspec.json
+Backend/.vs/*
+Backend/.vscode/*
+Frontend/documentation/*
+.vscode/launch.json
+.vscode/tasks.json
+Frontend/.vscode/settings.json

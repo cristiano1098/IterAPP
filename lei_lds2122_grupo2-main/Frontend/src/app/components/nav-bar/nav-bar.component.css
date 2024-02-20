@@ -1,0 +1,101 @@
+.logo {
+  color: black;
+  text-decoration: none;
+  font-family: "Pacifico";
+  font-size: 25px;
+  font-weight: bold;
+}
+
+a.userNameLink:hover {
+  text-decoration: underline;
+}
+
+.profilePic {
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#divUserDropWeb {
+  width: 15vw;
+}
+
+#searchFriends:focus {
+  box-shadow: none !important;
+}
+
+/* Some <div> elements must have this specific heigh so that the dropdowns top align with the navbar bottom */
+.height46 {
+  height: 46px;
+}
+
+/* Removes the predifined focus attributes for <a> elements with the .nav-link class */
+a.nav-link:focus {
+  color: black;
+  box-shadow: none;
+}
+
+.dropdownCustom:hover {
+  background-color: #e9ecef !important;
+}
+
+.dropdownCustom:active {
+  background-color: #8bc34a;
+}
+
+/* Defines the navbar height */
+#navBar,
+#navBarMobile {
+  height: 50px;
+}
+
+/* Makes the hover of an element brighter than the default green background color (.bg-green) */
+.lightGreenHover:hover {
+  background-color: rgb(180, 231, 79);
+}
+
+#userIconDropdownMobile:focus #userIconMobile {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem;
+  border-radius: 0.25rem;
+}
+
+a, button.dropdownCustom {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Removes <a> default color blue on hover*/
+a:hover, button.dropdownCustom:hover {
+  color: black;
+}
+
+.noUnderline {
+  text-decoration: none;
+}
+
+/* this class get's a nav bar toggler icon from a specified source with specific height and width */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+li {
+  list-style-type: none;
+}
+
+/* Small screen */
+@media (max-width: 766px) {
+  .largeScreen {
+    display: none !important;
+  }
+}
+
+/* Large screen */
+@media (min-width: 767px) {
+  .smallScreen,
+  .mobileMenu {
+    display: none !important;
+  }
+}

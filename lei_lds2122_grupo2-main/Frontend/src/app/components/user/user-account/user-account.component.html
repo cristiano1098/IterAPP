@@ -1,0 +1,103 @@
+<div id="maindiv" class="d-flex justify-content-center">
+  <form class="p-3">
+    <div class="d-flex justify-content-between">
+      <a routerLink="/" type="buttom" title="Close" style="color: black">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20px"
+          height="20px"
+          fill="currentColor"
+          class="bi bi-x-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </a>
+      <a
+        routerLink="/user/account/edit"
+        type="buttom"
+        title="Edit acount"
+        style="color: black"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-pencil-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="d-flex justify-content-center mb-3">
+      <img
+        [src]="registerImage"
+        id="registerImage"
+        alt="Register Image"
+        width="50%"
+      />
+    </div>
+    <div class="d-flex justify-content-around">
+      <div>
+        <b>{{user.userName}}</b>
+      </div>
+      <div>
+        <span *ngIf="!user.privateProfile" class="badge rounded-pill bg-success">Público</span>
+        <span *ngIf="user.privateProfile" class="badge rounded-pill bg-danger">Privado</span>
+      </div>
+    </div>
+    <hr class="w-100" />
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control shadow-small disabled-white"
+        name="userName"
+        placeholder="Nome de Utilizador"
+        required
+        disabled
+        value="{{user.name}}"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="email"
+        class="form-control shadow-small disabled-white"
+        name="email"
+        placeholder="Email"
+        value="{{user.email}}"
+        required
+        disabled
+      />
+    </div>
+    <div class="mb-3">
+    <div class="input-group">
+      <span class="input-group-text">Descrição</span>
+      <textarea
+        class="form-control disabled-white"
+        aria-label="With textarea"
+        disabled
+        value="{{user.description}}"
+      ></textarea>
+    </div> </div>
+    <div class="mb-3 form-date d-flex">
+      <label
+        for="birthDate"
+        class="form-label w-50 d-flex align-items-center shadow-small"
+        >Data de Nascimento</label
+      >
+      <input id="birthDate" type="date" class="form-control w-50 disabled-white " name="birthDate" required
+      value="{{user.birthDate}}" disabled>
+
+    
+    </div>
+  </form>
+</div>

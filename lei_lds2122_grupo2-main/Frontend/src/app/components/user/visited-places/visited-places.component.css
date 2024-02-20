@@ -1,0 +1,22 @@
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.badge {
+    font-size: 12px !important;
+    background-color: white;
+  }
+
+  .backgroundImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+  }
+  
+  .AClass{
+    right:0px;
+    position: absolute;
+}

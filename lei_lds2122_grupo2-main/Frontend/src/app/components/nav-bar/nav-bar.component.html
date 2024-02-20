@@ -1,0 +1,599 @@
+<!-- Large screen navbar -->
+<div class="largeScreen">
+    <nav id="navBar" class="d-flex largeScreen bg-green">
+        <div class="d-flex justify-content-between align-items-center w-100">
+
+            <!-- Application logo and user search input -->
+            <div class="d-flex align-items-center ps-3">
+                <!-- Application logo -->
+                <a id="logoBigScreen" class="logo navbar-brand" href="">Iter</a>
+
+                <div id="divSearchUser" *ngIf="userLoggedIn" class="d-flex align-items-center px-2"
+                    style="background-color: white; border-radius: 25px;">
+                    <input id="searchFriends" type="text" class="form-control border-0 p-2" style="border-radius: 25px;"
+                        placeholder="Encontre amigos" name="searchInput" [(ngModel)]="userSearch.input">
+
+                    <!-- User Search Input -->
+                    <button class="border-0" style="border-radius: 25px; background-color: white;"
+                        (click)="searchUsersWeb()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+
+                    <!-- User list Modal -->
+                    <div id="userModal" class="modal fade" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="btn" style="visibility: hidden;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                            fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                                            <path fill-rule="evenodd"
+                                                d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                                        </svg>
+                                    </button>
+                                    <h5 class="modal-title">Utilizadores</h5>
+                                    <button data-bs-dismiss="modal" class="btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                            fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                                            <path fill-rule="evenodd"
+                                                d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <span *ngIf="userSearch.requestError" class="text-danger">Erro ao pesquisar
+                                        utilizadores</span>
+
+                                    <div *ngIf="userSearch.searching" class="spinner-border" role="status">
+                                        <span class="sr-only"></span>
+                                    </div>
+
+                                    <div *ngIf="!userSearch.searching && searchedUsers.users.length == 0">
+                                        Nenhum utilizador foi encontrado
+                                    </div>
+
+                                    <div *ngFor="let user of searchedUsers.users, let index = index" class="d-flex"
+                                        [ngClass]="index + 1 == searchedUsers.users.length ? '': 'pb-1 mb-1 border-bottom' ">
+
+                                        <a href="/user/{{user.userName}}"><img [src]="user.profilePhoto"
+                                                class="profilePic"
+                                                onerror="this.src='/assets/images/avatarmasculine2.png'" alt="">
+                                        </a>
+
+                                        <div class="ms-3 d-flex flex-column">
+                                            <a href="/user/{{user.userName}}" class="fw-5 fw-bold userNameLink">
+                                                {{user.userName}}
+                                            </a>
+                                            <span class="fw-6 text-secondary">{{user.name}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Main nav bar menu list -->
+            <ul class="nav navbar-light h-100 d-flex">
+
+                <!-- Routes Button -->
+                <li class="d-flex align-items-center">
+                    <div class="dropdown height46">
+                        <a id="btnRouteDropWeb" class="btn nav-link lightGreenHover h-100 d-flex align-items-center"
+                            data-bs-toggle="dropdown" aria-expanded="false" (click)="showDropdown('btnRouteDropWeb')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-signpost-split me-1" viewBox="0 0 16 16">
+                                <path
+                                    d="M7 7V1.414a1 1 0 0 1 2 0V2h5a1 1 0 0 1 .8.4l.975 1.3a.5.5 0 0 1 0 .6L14.8 5.6a1 1 0 0 1-.8.4H9v10H7v-5H2a1 1 0 0 1-.8-.4L.225 9.3a.5.5 0 0 1 0-.6L1.2 7.4A1 1 0 0 1 2 7h5zm1 3V8H2l-.75 1L2 10h6zm0-5h6l.75-1L14 3H8v2z" />
+                            </svg> Rotas
+                        </a>
+
+                        <!-- Route Dropdown Options -->
+                        <ul id="routeDropdownWeb" class="dropdown-menu" aria-labelledby="routeDropdown">
+                            <li>
+                                <a class="dropdownCustom d-block py-2 px-3" href="/route/create">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-journal-plus me-1" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z" />
+                                        <path
+                                            d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                        <path
+                                            d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                    </svg>
+                                    Criar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdownCustom d-block py-2 px-3" href="/route/generate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-gear me-1" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                        <path
+                                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                    </svg> Gerar
+                                </a>
+                            </li>
+                            <li *ngIf="userLoggedIn">
+                                <a class="dropdownCustom d-block py-2 px-3" href="/user/routes/favorite">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-star me-1" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                                    </svg>
+                                    Favoritas
+                                </a>
+                            </li>
+                            <li *ngIf="userLoggedIn">
+                                <button class="dropdownCustom d-block w-100 py-2 px-3"
+                                    style="text-align: start;border: 0; background-color: white;"
+                                    (click)="showSearchRouteModal()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-search me-1" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg> Pesquisar
+                                </button>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Locals Button -->
+                <li class="d-flex align-items-center">
+                    <div class="dropdown height46">
+                        <a id="btnPalceDropWeb" class="btn nav-link lightGreenHover h-100 d-flex align-items-center"
+                            data-bs-toggle="dropdown" aria-expanded="false" (click)="showDropdown('btnPalceDropWeb')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-compass me-1" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                                <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
+                            </svg>
+                            Locais
+                        </a>
+                        <!-- Local Dropdown Options -->
+                        <ul class="dropdown-menu" aria-labelledby="palceDropdown" style="min-width: max-content;">
+                            <li *ngIf="userLoggedIn">
+                                <a class="dropdownCustom d-block py-2 px-3" href="/user/interestedPlaces">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-binoculars me-1" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z" />
+                                    </svg>
+                                    Locais de interesse
+                                </a>
+                            </li>
+                            <li>
+                                <button class="dropdownCustom d-block w-100 py-2 px-3"
+                                    style="text-align: start;border: 0; background-color: white;"
+                                    (click)="showSearchPlaceModal()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-search me-1" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                    Pesquisar
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- User options -->
+            <div *ngIf="userLoggedIn" id="divUserDropWeb" class="d-flex justify-content-end">
+                <!-- User icon is displayed if the user is logged in -->
+                <button id="btnUserDropWeb" class="height46 bg-green border-0 m-0 pe-3" data-bs-toggle="dropdown"
+                    (click)="showDropdown('btnUserDropWeb')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
+                        class="icon bi bi-person-circle me-2" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                </button>
+
+                <!-- User menu can be displayed if the user is logged in and this menu visibility is controled by the button whose id is "#userIconDropdown" -->
+                <ul class="dropdown-menu dropdown-menu-end pb-0 pt-1" aria-labelledby="userIconDropdown">
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/account">Ver conta</a>
+                    </li>
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/routes">As minhas
+                            rotas</a></li>
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/account/edit">Editar
+                            conta</a></li>
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/routes/favorite">Rotas favoritas</a></li>
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/routes/used">Rotas
+                            utilizadas</a></li>
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/interestedPlaces">Locais
+                            de interesse</a></li>
+                    <li><a class="dropdown-item dropdownCustom py-2" type="button" href="/user/visitedPlaces">Locais de
+                            visitados</a></li>
+                    <li><a class="px-3 py-2 btn-danger w-100 noUnderline" type="button" href="/logout">Terminar
+                            sessão</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Register and Login buttons are displayed if the user is not logged in -->
+            <div id="rightButtons" *ngIf="!userLoggedIn" class="h-100 d-flex me-1">
+                <button class="h-100 bg-green border-0 px-0 fw-bold text-dark ">
+                    <a class="btn nav-link lightGreenHover d-flex align-items-center height46" href="/login">Iniciar
+                        Sessão</a>
+                </button>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- Small screen navbar -->
+<div class="smallScreen">
+    <nav id="navBarMobile" class="d-flex smallScreen bg-green">
+        <div class="d-flex justify-content-between align-items-center w-100">
+
+            <!-- Mobile nav bar toggler -->
+            <div class="dropdown">
+                <button class="navbar-toggler" type="button" id="dropdownMenu" (click)="displayMobileMenu()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Application logo -->
+            <div class="logo d-flex justify-content-center">
+                <a class="logo d-flex align-items-center px-3" href="/">Iter</a>
+            </div>
+
+            <!-- Displays the user icon that, when clicked, the user menu is shown -->
+            <button *ngIf="userLoggedIn" id="userIconDropdownMobile"
+                class="d-flex justify-content-center align-items-center h-100 bg-green border-0 m-0 p-0"
+                (click)="displayMobileUserMenu()">
+                <svg id="userIconMobile" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black"
+                    class="icon bi bi-person-circle me-2 p-1" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+            </button>
+
+            <!-- If the user is not logged in the login button is shown -->
+            <div *ngIf="!userLoggedIn" class="h-100 me-1">
+                <button class="h-100 w-100 p-0 bg-green border-0 fw-bold text-dark">
+                    <a class="btn nav-link w-100 lightGreenHover height46 px-3 d-flex align-items-center"
+                        href="/login">Iniciar Sessão</a>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile main menu -->
+    <div *ngIf="mobileMenuVisibility" class="d-block dropdown dropdown-menu mobileMenu m-0 p-0"
+        style="min-width: max-content !important;">
+        <ul id="mobileDropdown" class="m-0 p-0">
+
+            <!-- Routes Button -->
+            <li>
+                <div class="dropdown">
+                    <a id="btnRouteDropMobile" class="btn dropdownCustom nav-link d-flex align-items-center px-3"
+                        data-bs-toggle="dropdown" aria-expanded="false" (click)="showDropdown('btnRouteDropMobile')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-signpost-split me-1" viewBox="0 0 16 16">
+                            <path
+                                d="M7 7V1.414a1 1 0 0 1 2 0V2h5a1 1 0 0 1 .8.4l.975 1.3a.5.5 0 0 1 0 .6L14.8 5.6a1 1 0 0 1-.8.4H9v10H7v-5H2a1 1 0 0 1-.8-.4L.225 9.3a.5.5 0 0 1 0-.6L1.2 7.4A1 1 0 0 1 2 7h5zm1 3V8H2l-.75 1L2 10h6zm0-5h6l.75-1L14 3H8v2z" />
+                        </svg>
+                        Rotas
+                    </a>
+
+                    <!-- Route Dropdown Options -->
+                    <ul class="dropdown-menu m-0 p-0" style="min-width: max-content !important;">
+                        <li>
+                            <a class="dropdownCustom d-block py-2 px-3" href="/route/create">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-journal-plus me-1" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z" />
+                                    <path
+                                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                    <path
+                                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                </svg>
+                                Criar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdownCustom d-block py-2 px-3" href="/route/generate">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-gear me-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                    <path
+                                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                </svg> Gerar
+                            </a>
+                        </li>
+                        <li *ngIf="userLoggedIn">
+                            <a class="dropdownCustom d-block py-2 px-3" href="/user/routes/favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-star me-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                                </svg>
+                                Favoritas
+                            </a>
+                        </li>
+                        <li *ngIf="userLoggedIn">
+                            <button class="dropdownCustom d-block w-100 py-2 px-3"
+                                style="text-align: start;border: 0; background-color: white;"
+                                (click)="showSearchRouteModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-search me-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg> Pesquisar
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Locals Button -->
+            <li>
+                <div class="dropdown">
+                    <a id="btnPlaceDropMobile" class="btn dropdownCustom nav-link d-flex align-items-center px-3"
+                        type="button" aria-expanded="false" data-bs-toggle="dropdown"
+                        (click)="showDropdown('btnPlaceDropMobile')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-compass me-1" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
+                        </svg>
+                        Locais
+                    </a>
+
+                    <!-- Locals dropdown options -->
+                    <ul class="dropdown-menu m-0 p-0" style="min-width: max-content !important;">
+                        <li *ngIf="userLoggedIn">
+                            <a class="dropdown-item my-2" href="/user/interestedPlaces">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-binoculars me-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z" />
+                                </svg>
+                                De interesse
+                            </a>
+                        </li>
+                        <li>
+                            <button class="dropdownCustom d-block w-100 py-2 px-3"
+                                style="text-align: start;border: 0; background-color: white;"
+                                (click)="showSearchPlaceModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-search me-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg> Pesquisar
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Users Button -->
+            <li>
+                <button class="btn dropdownCustom nav-link d-flex align-items-center px-3" (click)="searchUsersMobile()"
+                    style="color: black;font-weight: bold;text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-search me-1" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                    Pesquisar
+                </button>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <!-- User list Modal -->
+    <div id="mobileUserModal" class="modal fade" tabindex="0">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn" style="visibility: hidden;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                            <path fill-rule="evenodd"
+                                d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                        </svg>
+                    </button>
+                    <h5 class="modal-title">Utilizadores</h5>
+                    <button data-bs-dismiss="modal" class="btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                            <path fill-rule="evenodd"
+                                d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div *ngIf="userLoggedIn" class="d-flex align-items-center border mb-3 flex-grow-1">
+                        <input type="text" class="form-control border-0 p-2" placeholder="Encontre amigos"
+                            name="searchInput" [(ngModel)]="userSearch.input" (keyup)="searchUsersMobile()">
+
+                        <!-- Search button -->
+                        <button class="btn border-start" style="border-radius: 0 !important;"
+                            (click)="searchUsersMobile()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+
+                    </div>
+
+                    <span *ngIf="userSearch.requestError" class="text-danger">Erro ao pesquisar
+                        utilizadores</span>
+
+                    <div *ngIf="userSearch.searching" class="spinner-border" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+
+                    <div *ngIf="!userSearch.searching && searchedUsers.users.length == 0">
+                        Nenhum utilizador foi encontrado
+                    </div>
+
+                    <a *ngFor="let user of searchedUsers.users, let index = index" href="/user/{{user.userName}}"
+                        class="d-flex"
+                        [ngClass]="index + 1 == searchedUsers.users.length ? '': 'pb-1 mb-1 border-bottom' ">
+
+                        <img [src]="user.profilePhoto" class="profilePic"
+                            onerror="this.src='/assets/images/avatarmasculine2.png'" alt="">
+
+                        <div class="ms-3 d-flex flex-column">
+                            <span class="fw-5 fw-bold">{{user.userName}}</span>
+                            <span class="fw-6 text-secondary">{{user.name}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User menu -->
+    <!-- Is displayed if,the visibility is set to true by the button whose id is "#userIconDropdownMobile" and the user is logged in -->
+    <div *ngIf="mobileUserMenuVisibility && userLoggedIn"
+        class="d-block dropdown-menu mobileMenu w-100 m-0 p-0 border-0 rounded-0">
+        <ul id="mobileUserMenu" class="m-0 p-0">
+            <li><a class="dropdown-item text-center py-3" href="/user/account">Ver conta</a></li>
+            <li><a class="dropdown-item text-center py-3" href="/user/routes">As minhas rotas</a></li>
+            <li><a class="dropdown-item text-center py-3" href="/user/account/edit">Editar conta</a></li>
+            <li><a class="dropdown-item text-center py-3" href="/notImplemented">Rotas favoritas</a></li>
+            <li><a class="dropdown-item text-center py-3" href="/user/routes/used">Rotas utilizadas</a></li>
+            <li><a class="dropdown-item text-center py-3" href="/user/interestedPlaces">Locais de interesse</a></li>
+            <li><a class="w-100 btn text-center btn-danger py-3" href="/logout">Terminar sessão</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<!-- Search route modal -->
+<div id="routeModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog" style="max-width: 1200px; padding-left: 10px; padding-right: 10px;">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button class="btn" style="visibility: hidden;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                        <path fill-rule="evenodd"
+                            d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                    </svg>
+                </button>
+                <h5 class="modal-title">Pesquisar Rota</h5>
+                <button data-bs-dismiss="modal" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                        <path fill-rule="evenodd"
+                            d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                    </svg>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="d-flex align-items-center border mb-3 flex-grow-1">
+                    <input id="searchRoutes" type="text" class="form-control border-0 p-2"
+                        placeholder="Encontre uma rota" name="routeSearchInput" [(ngModel)]="routeSearch.input">
+                    <button class="btn border-start" style="border-radius: 0 !important;" (click)="searchRoutes()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <span *ngIf="routeSearch.requestError" class="text-danger">Erro ao pesquisar
+                    rotas</span>
+
+                <div *ngIf="routeSearch.searching" class="d-flex w-100 justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+
+                <div *ngIf="!routeSearch.searching && noRoutesFound">
+                    Nenhuma rota foi encontrada
+                </div>
+
+                <app-route-list></app-route-list>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search place modal -->
+<div id="placeModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button class="btn" style="visibility: hidden;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                        <path fill-rule="evenodd"
+                            d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                    </svg>
+                </button>
+                <h5 class="modal-title">Pesquisar Local</h5>
+                <button data-bs-dismiss="modal" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                        <path fill-rule="evenodd"
+                            d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                    </svg>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="d-flex" style="border: 1px solid lightgray;">
+                    <input id="placeAutocomplete" type="text" class="form-control" style="border-radius: 0; border:0"
+                        placeholder="Procure um local">
+
+                    <button id="btnClearText" class="btn input-group-text h-100"
+                        style="border-left: 1px solid lightgray; border-radius: 0%;"
+                        (click)="clearAutocomplete()">X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

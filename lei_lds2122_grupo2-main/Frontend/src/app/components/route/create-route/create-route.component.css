@@ -1,0 +1,190 @@
+#mapComponent {
+  min-height: 500px;
+  max-height: 500px;
+}
+
+#btnAddLocal {
+  width: max-content;
+}
+
+.btn-ouline-lightGray {
+  border: 1px solid #ced4da;
+}
+
+.placeImg {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+#divBtnRemove2 {
+  padding: 12px;
+  width: 100%;
+}
+
+.badge {
+  font-size: 12px !important;
+}
+
+#btnClearText {
+  border: 1px solid #ced4da;
+  border-left: none;
+}
+
+#btnClearText:focus {
+  box-shadow: none;
+}
+
+#autocomplete {
+  border-right: none;
+}
+
+.btnCreateRoute {
+  max-width: 200px !important;
+}
+
+#btnCreateRoute {
+  align-self: flex-end;
+  max-width: 400px;
+}
+
+.cardContainer {
+  min-height: 130px;
+}
+
+@media (min-width: 950px) {
+  .cardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 1rem !important;
+  }
+
+  .divTimeInputs {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 0.5rem !important;
+    justify-content: space-around;
+  }
+
+  .divPlaceInfo {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+  }
+
+  #divBtnRemove2 {
+    display: none;
+  }
+}
+
+@media (max-width: 950px) {
+  .cardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 1rem !important;
+  }
+
+  .divTimeInputs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px !important;
+  }
+
+  .divPlaceInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 12px;
+  }
+
+  #btnRemove1,
+  #divBtnRemove1 {
+    display: none;
+  }
+
+  #btnRemove2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 766px) {
+  .largeScreen {
+    display: none !important;
+  }
+
+  #mainDiv {
+    flex-direction: column;
+  }
+
+  #divCreateRoute,
+  #divRouteForm {
+    width: 100%;
+  }
+
+  form {
+    margin-bottom: 0 !important;
+  }
+
+  form div {
+    width: 100% !important;
+  }
+
+  input.time {
+    font-size: 12px !important;
+    padding: 0.25rem;
+  }
+
+  .divPlaceInfo {
+    padding: 6px;
+  }
+
+  .divTimeInputs {
+    padding: 6px !important;
+  }
+
+  #divRouteForm,
+  #divCreateRoute {
+    padding: 0.3rem !important;
+    align-items: center;
+  }
+
+  #divSearchPlace {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #divInputGroup {
+    margin-bottom: 0.3rem !important;
+  }
+
+  #btnAddLocal {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  #btnCreateRoute {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+  }
+}
+
+@media (min-width: 767px) {
+  .smallScreen {
+    visibility: hidden;
+  }
+}

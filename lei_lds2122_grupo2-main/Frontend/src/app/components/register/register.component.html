@@ -1,0 +1,42 @@
+<div id="maindiv" class="d-flex justify-content-center">
+    <form class="p-3">
+        <div class="d-flex justify-content-center mb-3">
+            <img [src]="registerImage" id="registerImage" alt="Register Image" width="50%">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control shadow-small" name="name" placeholder="Nome Completo" required
+                [(ngModel)]="userRegisterInfo.name">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control shadow-small" name="userName" placeholder="Nome de Utilizador"
+                required [(ngModel)]="userRegisterInfo.userName">
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control shadow-small" name="email" placeholder="Email" required
+                [(ngModel)]="userRegisterInfo.email">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control shadow-small" name="password" placeholder="Palavra Passe"
+                required [(ngModel)]="userRegisterInfo.password">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control shadow-small" name="passwordConfirmation"
+                placeholder="Confirmação da Palavra Passe" required [(ngModel)]="passwordConfirmation">
+        </div>
+        <div *ngIf="differentPasswords" class="text-danger mb-3">
+            Palavras passes não correspondem!
+        </div>
+        <div class="mb-3 form-date d-flex">
+            <label for="birthDate" class="form-label w-50 d-flex align-items-center shadow-small">Data de
+                Nascimento</label>
+            <input id="birthDate" type="date" class="form-control w-50" name="birthDate" required
+                [(ngModel)]="userRegisterInfo.birthDate">
+        </div>
+        <div *ngIf="errorRegister" class="text-danger mb-3">
+            Erro ao criar conta!
+        </div>
+        <div class="w-100 d-flex justify-content-center">
+            <button type="submit" class="btn btn-green shadow-small" (click)="register()">Criar Conta</button>
+        </div>
+    </form>
+</div>

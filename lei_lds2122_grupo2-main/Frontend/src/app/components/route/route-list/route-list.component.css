@@ -1,0 +1,53 @@
+.backgroundImage {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profilePic {
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.badge {
+  font-size: 12px !important;
+  background-color: white;
+}
+
+/* Large screen */
+@media (min-width: 767px) {
+}
+
+/* Small screen */
+@media (max-width: 766px) {
+  .carousel {
+    max-height: 200px;
+  }
+
+  .cardBody {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .divCarousel {
+    margin: 12px 0;
+    max-width: 500px;
+  }
+
+  .card {
+    border-radius: 0;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .divCarousel,
+  .divRoute {
+    width: 100% !important;
+  }
+
+  .badge {
+    font-size: 10px !important;
+    margin-right: 2px !important;
+  }
+}
